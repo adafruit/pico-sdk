@@ -31,6 +31,10 @@
 #define PICO_DEFAULT_LED_PIN 11
 #endif
 
+#ifndef PICO_DEFAULT_WS2812_PIN
+#define PICO_DEFAULT_WS2812_PIN 17 // power enable is 16
+#endif
+
 #ifndef PICO_FLASH_SPI_CLKDIV
 #define PICO_FLASH_SPI_CLKDIV 2
 #endif
