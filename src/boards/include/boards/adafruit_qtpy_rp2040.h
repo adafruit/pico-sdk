@@ -49,6 +49,23 @@
 #define PICO_DEFAULT_I2C_SCL_PIN 25
 #endif
 
+//------------- SPI -------------//
+#ifndef PICO_DEFAULT_SPI
+#define PICO_DEFAULT_SPI 0
+#endif
+
+#ifndef PICO_DEFAULT_SPI_MOSI_PIN
+#define PICO_DEFAULT_SPI_MOSI_PIN 3
+#endif
+
+#ifndef PICO_DEFAULT_SPI_MISO_PIN
+#define PICO_DEFAULT_SPI_MISO_PIN 4
+#endif
+
+#ifndef PICO_DEFAULT_SPI_SCK_PIN
+#define PICO_DEFAULT_SPI_SCK_PIN 6
+#endif
+
 //------------- FLASH -------------//
 #ifndef PICO_FLASH_SPI_CLKDIV
 #define PICO_FLASH_SPI_CLKDIV 2
