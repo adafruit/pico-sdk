@@ -9,11 +9,11 @@
 //       SHOULD ONLY CONSIST OF PREPROCESSOR DIRECTIVES
 // -----------------------------------------------------
 
-#ifndef _BOARDS_ADAFRUIT_FEATHER_RP2040_H
-#define _BOARDS_ADAFRUIT_FEATHER_RP2040_H
+#ifndef _BOARDS_ADAFRUIT_QTPY_RP2040_H
+#define _BOARDS_ADAFRUIT_QTPY_RP2040_H
 
 // For board detection
-#define ADAFRUIT_FEATHER_RP2040
+#define ADAFRUIT_QTPY_RP2040
 
 //------------- UART -------------//
 #ifndef PICO_DEFAULT_UART
@@ -21,20 +21,19 @@
 #endif
 
 #ifndef PICO_DEFAULT_UART_TX_PIN
-#define PICO_DEFAULT_UART_TX_PIN 0
+#define PICO_DEFAULT_UART_TX_PIN 20
 #endif
 
 #ifndef PICO_DEFAULT_UART_RX_PIN
-#define PICO_DEFAULT_UART_RX_PIN 1
+#define PICO_DEFAULT_UART_RX_PIN 9
 #endif
 
 //------------- LED -------------//
-#ifndef PICO_DEFAULT_LED_PIN
-#define PICO_DEFAULT_LED_PIN 13
-#endif
+// No normal LED
+// #define PICO_DEFAULT_LED_PIN 13
 
 #ifndef PICO_DEFAULT_WS2812_PIN
-#define PICO_DEFAULT_WS2812_PIN 16
+#define PICO_DEFAULT_WS2812_PIN 12 // power enable is pin 11
 #endif
 
 //------------- I2C -------------//
@@ -43,11 +42,11 @@
 #endif
 
 #ifndef PICO_DEFAULT_I2C_SDA_PIN
-#define PICO_DEFAULT_I2C_SDA_PIN 2
+#define PICO_DEFAULT_I2C_SDA_PIN 24
 #endif
 
 #ifndef PICO_DEFAULT_I2C_SCL_PIN
-#define PICO_DEFAULT_I2C_SCL_PIN 3
+#define PICO_DEFAULT_I2C_SCL_PIN 25
 #endif
 
 //------------- FLASH -------------//
