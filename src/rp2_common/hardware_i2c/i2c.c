@@ -85,6 +85,13 @@ uint i2c_set_baudrate(i2c_inst_t *i2c, uint baudrate) {
     i2c->hw->fs_scl_lcnt = lcnt;
     i2c->hw->fs_spklen = lcnt < 16 ? 1 : lcnt / 16;
 
+    // Set hold time of SDA during transmit to 2. Several I2C devices need
+    // this fix to work well or at all, including the
+    // TCS34725 color sensor, and the SSD1306 and SH1107 OLED drivers.
+    // There is no discernable slowdown in timing traces.
+    i2c->hw->sda_hold =
+        I2C_IC_SDA_HOLD_IC_SDA_RX_HOLD_RESET << I2C_IC_SDA_HOLD_IC_SDA_RX_HOLD_LSB |
+        2 << I2C_IC_SDA_HOLD_IC_SDA_TX_HOLD_LSB;
     i2c->hw->enable = 1;
     return freq_in / period;
 }
