@@ -13,6 +13,8 @@
 #include "hardware/regs/xosc.h"
 #include "hardware/structs/xosc.h"
 
+#define XOSC_STARTUP_DELAY_MULTIPLIER (64)
+
 void xosc_init(void) {
     // Assumes 1-15 MHz input
     assert(XOSC_MHZ <= 15);
@@ -20,7 +22,8 @@ void xosc_init(void) {
 
     // Set xosc startup delay
     uint32_t startup_delay = (((12 * MHZ) / 1000) + 128) / 256;
-    xosc_hw->startup = startup_delay;
+    // Lengthen startup delay to accomodate slow-starting oscillators
+    xosc_hw->startup = startup_delay * XOSC_STARTUP_DELAY_MULTIPLIER;
 
     // Set the enable bit now that we have set freq range and startup delay
     hw_set_bits(&xosc_hw->ctrl, XOSC_CTRL_ENABLE_VALUE_ENABLE << XOSC_CTRL_ENABLE_LSB);
