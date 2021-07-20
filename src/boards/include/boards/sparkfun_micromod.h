@@ -17,9 +17,12 @@
 #ifndef _BOARDS_SPARKFUN_MICROMOD_H
 #define _BOARDS_SPARKFUN_MICROMOD_H
 
+// For board detection
+#define SPARKFUN_MICROMOD
+
 #ifndef PICO_DEFAULT_UART
 #define PICO_DEFAULT_UART 0
-#define
+#endif
 
 #ifndef PICO_DEFAULT_UART_TX_PIN
 #define PICO_DEFAULT_UART_TX_PIN 0
@@ -46,7 +49,26 @@
 #define PICO_DEFAULT_I2C_SCL_PIN   5
 #endif
 
+// --- SPI ---
+#ifndef PICO_DEFAULT_SPI
+#define PICO_DEFAULT_SPI 0
+#endif
+#ifndef PICO_DEFAULT_SPI_SCK_PIN
+#define PICO_DEFAULT_SPI_SCK_PIN 22
+#endif
+#ifndef PICO_DEFAULT_SPI_TX_PIN
+#define PICO_DEFAULT_SPI_TX_PIN 23
+#endif
+#ifndef PICO_DEFAULT_SPI_RX_PIN
+#define PICO_DEFAULT_SPI_RX_PIN 20
+#endif
+#ifndef PICO_DEFAULT_SPI_CSN_PIN
+#define PICO_DEFAULT_SPI_CSN_PIN 21
+#endif
+
 // spi flash
+#define PICO_BOOT_STAGE2_CHOOSE_W25Q080 1
+
 #ifndef PICO_FLASH_SPI_CLKDIV
 #define PICO_FLASH_SPI_CLKDIV 2
 #endif

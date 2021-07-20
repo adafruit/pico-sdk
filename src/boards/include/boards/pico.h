@@ -14,6 +14,9 @@
 #ifndef _BOARDS_PICO_H
 #define _BOARDS_PICO_H
 
+// For board detection
+#define RASPBERRYPI_PICO
+
 // --- UART ---
 #ifndef PICO_DEFAULT_UART
 #define PICO_DEFAULT_UART 0
@@ -60,6 +63,8 @@
 #endif
 
 // --- FLASH ---
+
+#define PICO_BOOT_STAGE2_CHOOSE_W25Q080 1
 
 #ifndef PICO_FLASH_SPI_CLKDIV
 #define PICO_FLASH_SPI_CLKDIV 2

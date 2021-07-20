@@ -6,6 +6,7 @@ target_link_libraries(kitchen_sink_libs INTERFACE
     hardware_adc
     hardware_clocks
     hardware_divider
+    hardware_exception
     hardware_dma
     hardware_flash
     hardware_gpio
@@ -66,6 +67,7 @@ target_compile_options(kitchen_sink_options INTERFACE
         -Wfloat-equal
         -Wmissing-format-attribute
         -Wconversion
+        -Wsign-compare
         $<$<COMPILE_LANGUAGE:C>:-Wstrict-prototypes>
 
         -Wno-inline
@@ -85,7 +87,7 @@ target_compile_options(kitchen_sink_options INTERFACE
         )
 
 target_compile_definitions(kitchen_sink_libs INTERFACE
-        NDEBUG
+        PARAM_ASSERTIONS_ENABLE_ALL=1 # want to check all the assertions for compilation warnings
         PICO_AUDIO_DMA_IRQ=1
 )
 
