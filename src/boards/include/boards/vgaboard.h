@@ -12,6 +12,9 @@
 #ifndef _BOARDS_VGABOARD_H
 #define _BOARDS_VGABOARD_H
 
+// For board detection
+#define RASPBERRYPI_VGABOARD
+
 // Audio pins. I2S BCK, LRCK are on the same pins as PWM L/R.
 // - When outputting I2S, PWM sees BCK and LRCK, which should sound silent as
 //   they are constant duty cycle, and above the filter cutoff
@@ -26,8 +29,8 @@
 #define VGABOARD_VGA_COLOR_PIN_BASE 0
 #define VGABOARD_VGA_SYNC_PIN_BASE 16
 
-// Note DAT2/3 are shared with UART TX/RX (pull jumpers off header to access
-// UART pins and disconnect SD DAT2/3)
+// Note DAT1/2 are shared with UART TX/RX (pull jumpers off header to access
+// UART pins and disconnect SD DAT1/2)
 #define VGABOARD_SD_CLK_PIN 5
 #define VGABOARD_SD_CMD_PIN 18
 #define VGABOARD_SD_DAT0_PIN 19
@@ -57,10 +60,12 @@
 #define PICO_SD_CMD_PIN VGABOARD_SD_CMD_PIN
 #define PICO_SD_DAT0_PIN VGABOARD_SD_DAT0_PIN
 
+// 1 or 4
 #ifndef PICO_SD_DAT_PIN_COUNT
 #define PICO_SD_DAT_PIN_COUNT 4
 #endif
 
+// 1 or -1
 #define PICO_SD_DAT_PIN_INCREMENT 1
 
 #define PICO_AUDIO_I2S_DATA_PIN VGABOARD_I2S_DIN_PIN

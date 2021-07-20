@@ -5,18 +5,45 @@
  */
 
 #include <stdio.h>
-#include "pico/stdlib.h"
-#include "pico/time.h"
+// Include all headers to check for compiler warnings
+#include "hardware/adc.h"
+#include "hardware/claim.h"
+#include "hardware/clocks.h"
+#include "hardware/divider.h"
 #include "hardware/dma.h"
-#include "pico/bit_ops.h"
+#include "hardware/exception.h"
+#include "hardware/flash.h"
+#include "hardware/gpio.h"
 #include "hardware/i2c.h"
-#include "hardware/pwm.h"
-#include "hardware/pio.h"
+#include "hardware/interp.h"
 #include "hardware/irq.h"
+#include "hardware/pio.h"
+#include "hardware/pll.h"
+#include "hardware/pwm.h"
+#include "hardware/resets.h"
+#include "hardware/rtc.h"
+#include "hardware/spi.h"
+#include "hardware/sync.h"
 #include "hardware/timer.h"
-#include "pico/divider.h"
-#include "pico/critical_section.h"
+#include "hardware/uart.h"
+#include "hardware/vreg.h"
+#include "hardware/watchdog.h"
+#include "hardware/xosc.h"
 #include "pico/binary_info.h"
+#include "pico/bit_ops.h"
+#include "pico/bootrom.h"
+#include "pico/divider.h"
+#include "pico/double.h"
+#include "pico/fix/rp2040_usb_device_enumeration.h"
+#include "pico/float.h"
+#include "pico/int64_ops.h"
+#include "pico/malloc.h"
+#include "pico/multicore.h"
+#include "pico/printf.h"
+#include "pico/stdlib.h"
+#include "pico/sync.h"
+#include "pico/time.h"
+#include "pico/unique_id.h"
 
 bi_decl(bi_block_device(
                            BINARY_INFO_MAKE_TAG('K', 'S'),
@@ -83,6 +110,7 @@ int main(void) {
     dma_channel_configure(0, &config, &dma_to, &dma_from, 1, true);
     dma_channel_set_config(0, &config, false);
 
+    // note this loop expects to cause a breakpoint!!
     for (int i = 0; i < 20; i++) {
         puts("sleepy");
         sleep_ms(1000);
@@ -94,4 +122,6 @@ int main(void) {
             irq_remove_handler(DMA_IRQ_1, dma_handler_b);
         }
     }
+    // this should compile as we are Cortex M0+
+    __asm volatile("SVC #3");
 }
