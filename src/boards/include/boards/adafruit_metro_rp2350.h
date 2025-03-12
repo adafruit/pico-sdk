@@ -13,8 +13,8 @@
 
 // pico_cmake_set PICO_PLATFORM=rp2350
 
-#ifndef _BOARDS_ADAFRUIT_METRO_RP2350_NOPSRAM_H
-#define _BOARDS_ADAFRUIT_METRO_RP2350_NOPSRAM_H
+#ifndef _BOARDS_ADAFRUIT_METRO_RP2350_H
+#define _BOARDS_ADAFRUIT_METRO_RP2350_H
 
 // On some samples, the xosc can take longer to stabilize than is usual
 #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
@@ -23,8 +23,6 @@
 
 // For board detection
 #define ADAFRUIT_METRO_RP2350
-#define ADAFRUIT_METRO_RP2350_NOPSRAM
-#define ADAFRUIT_METRO_RP2350_16MB_NOPSRAM
 
 // --- RP2350 VARIANT ---
 #define PICO_RP2350B 1
@@ -125,6 +123,15 @@
 // // PSRAM
 // #define RP2350_PSRAM_CS         (47u)
 // #define RP2350_PSRAM_MAX_SCK_HZ (109*1000*1000)
+#ifndef ADAFRUIT_METRO_RP2350_PSRAM_CS_PIN
+#define ADAFRUIT_METRO_RP2350_PSRAM_CS_PIN 47
+#endif
+#ifndef RP2350_PSRAM_CS
+#define RP2350_PSRAM_CS 47
+#endif
+#ifndef RP2350_PSRAM_MAX_SCK_HZ
+#define RP2350_PSRAM_MAX_SCK_HZ (109*1000*1000)
+#endif
 
 // // DVI connector
 // #define PIN_CKN (15u)
